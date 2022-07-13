@@ -1,0 +1,21 @@
+{
+  "name": "todoapi-t18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeoCosta-dev/ToDoAPI-T18.git"
+  },
+  "author": "LeoCosta-dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LeoCosta-dev/ToDoAPI-T18/issues"
+  },
+  "homepage": "https://github.com/LeoCosta-dev/ToDoAPI-T18#readme",
+  "type": "module"
+}
