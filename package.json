@@ -17,5 +17,8 @@
     "url": "https://github.com/LeoCosta-dev/ToDoAPI-T18/issues"
   },
   "homepage": "https://github.com/LeoCosta-dev/ToDoAPI-T18#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
