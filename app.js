@@ -4,6 +4,17 @@
 import express from "express";
 
 /**
+ * Importando biblioteca dotenv para acesso as variaveis de ambiente
+ */
+import * as dotenv from "dotenv"
+
+/**
+ * Execução do método config da biblioteca dotenv
+ * Esse método configura e permite o acesso do node as váriaveis de ambientes presentes no arquivo .env
+ */
+dotenv.config()
+
+/**
  * Definindo uma variável para a porta que deixará nossa aplicação disponível
  * O comando 'process.env' serve para acessar variável de ambiente, util quando chegar o momento de subir a aplicação
  */
