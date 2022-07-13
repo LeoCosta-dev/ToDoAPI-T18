@@ -9,6 +9,11 @@ import express from "express";
 import * as dotenv from "dotenv"
 
 /**
+ * Importando controller da Entidade(leia também como rota) Usuarios
+ */
+import Usuarios from "./src/controllers/Usuarios.js"
+
+/**
  * Execução do método config da biblioteca dotenv
  * Esse método configura e permite o acesso do node as váriaveis de ambientes presentes no arquivo .env
  */
@@ -36,3 +41,11 @@ app.listen(port, ()=>{
      */
     console.log(`Servidor online no endereço http://localhost:${port}`)
 })
+
+
+/**
+ * Chamada do método de controle de rotas do Controller Usuários
+ * Nessa chamada passamos a váriavel app, que armazena nosso express como parametro
+ * Assim o arquivo presente no controller consegue acessar utilizar o nosso express
+ */
+Usuarios.rotas(app)
