@@ -1,3 +1,4 @@
+import UsuarioModel from "../models/UsuarioModel.js";
 /**
  * Classe que irá gerenciar toda a rota de Usuários da nossa aplicação
  */
@@ -18,7 +19,8 @@ class Usuarios{
             /**
              * Método send informando o que vamos enviar para a outra ponta do servidor (Aquela que fez a requisição para a gente.)
              */
-            res.send("Rota usuários!")
+            const usuario = new UsuarioModel("José das Couves", "couve@mineira.com.br", "2199999999")
+            res.send(usuario)
         })
     }
 }
