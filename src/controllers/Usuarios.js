@@ -1,32 +1,27 @@
 import UsuarioModel from "../models/UsuarioModel.js";
 import ValidacoesService from "../services/ValidacoesService.js";
-/**
- * Classe que irá gerenciar toda a rota de Usuários da nossa aplicação
- */
-class Usuarios{
-    /**
-     * 
-     * Método estático de gerenciamento das rotas
-     * Ele é estático para que sejá possível o seu uso sem precisar instanciar a classe com 'new'
-     * Seu parametro app irá receber o express presente no arquivo app.js 
-     */
-    static rotas(app){
-        /**
-         * Método get do express, esse método gerencia as requisições do tipo get que chegam ao nosso servidor
-         * Para gerenciar o método recebe dois parametros, o primeiro é uma string com a rota
-         * O segundo é uma callback que recebe como parametros a requisição e a resposta que vamos enviar para a requisição
-         */
-        app.get("/usuarios", (req,res)=>{
-            /**
-             * Método send informando o que vamos enviar para a outra ponta do servidor (Aquela que fez a requisição para a gente.)
-             */
 
+class Usuarios{
+    static rotas(app){
+        app.get("/usuarios", (req,res)=>{
             const nome = "sds"
             const isValid = ValidacoesService.validaNome(nome)
 
             if(isValid){
                 const usuario = new UsuarioModel(nome, "couve@mineira.com.br", "2199999999")
-                res.send(usuario)
+                res.status(200).json({...usuario, verbo: "get"})
+            } else {
+                res.status(400).send("Erro")
+            }
+        })
+
+        app.post("/usuarios", (req, res)=>{
+            const nome = "sds"
+            const isValid = ValidacoesService.validaNome(nome)
+
+            if(isValid){
+                const usuario = new UsuarioModel(nome, "couve@mineira.com.br", "2199999999")
+                res.status(201).json({...usuario, verbo: "post"})
             } else {
                 res.status(400).send("Erro")
             }
@@ -34,7 +29,5 @@ class Usuarios{
     }
 }
 
-/**
- * Exportação da classe Usuários para que a mesma seja acessada em outros arquivos.
- */
+
 export default Usuarios;
