@@ -20,7 +20,8 @@ class Usuarios{
             /**
              * Método send informando o que vamos enviar para a outra ponta do servidor (Aquela que fez a requisição para a gente.)
              */
-            const nome = "sd"
+
+            const nome = "sds"
             const isValid = ValidacoesService.validaNome(nome)
 
             if(isValid){
