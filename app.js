@@ -12,5 +12,6 @@ app.listen(port, ()=>{
     console.log(`Servidor online no endereço http://localhost:${port}`)
 })
 
+app.use(express.json())
 
 Usuarios.rotas(app)
