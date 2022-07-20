@@ -5,6 +5,10 @@ class DatabaseMetodos{
         return Database
     }
 
+    /**
+     * 
+     * @returns Array<Object>
+     */
     static listarTodosUsuarios(){
         return Database.Usuarios
     }
