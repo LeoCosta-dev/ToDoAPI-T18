@@ -9,6 +9,11 @@ class DatabaseMetodos{
         return Database.Usuarios
     }
 
+    /**
+     * 
+     * @param {Object} usuario 
+     * @returns Object
+     */
     static inserirUsuario(usuario){
         Database.Usuarios = [...Database.Usuarios, usuario]
         return Database.Usuarios
