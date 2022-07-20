@@ -27,8 +27,11 @@ npm start
 ```
 
 ## Exemplo de rotas:
-### Post
-url/usuarios
+### Post: url/usuarios
+
+Objeto de requisição:
+<br>
+
 ```json
 {
 	"nome": "José",
@@ -36,8 +39,10 @@ url/usuarios
 	"telefone": "2199999999"
 }
 ```
+<br>
+Exemplo de resposta:
+<br>
 
-## Exemplo de resposta
 ```json
 [
 	{
