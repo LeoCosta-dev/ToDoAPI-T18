@@ -14,7 +14,8 @@ export default class ValidacoesService{
      * @returns boolean
      */
     static validaEmail(email){
-        return true
+        const regex = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
+        return regex.test(email)
     }
 
     /**
@@ -38,6 +39,12 @@ export default class ValidacoesService{
         return this.validaNome(nome) && this.validaTelefone(telefone) && this.validaEmail(email)
     }
 
+    /**
+     * 
+     * @param {number} index 
+     * @param {Array<object>} database 
+     * @returns Boolean
+     */
     static validaIndex(index, database){
         return index <= database.length
     }

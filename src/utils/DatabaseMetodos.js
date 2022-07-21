@@ -1,32 +1,47 @@
 import { Database } from "../infra/Database.js";
 
 class DatabaseMetodos{
+    
+    /**
+     * 
+     * @returns array<object>
+     */
     static listarTodoOBanco(){
         return Database
     }
 
     /**
      * 
-     * @returns Array<Object>
+     * @returns Array<object>
      */
     static listarTodosUsuarios(){
         return Database.Usuarios
     }
 
+    /**
+     * 
+     * @param {number} index 
+     * @returns object
+     */
     static listarUsuarioPorIndex(index){
         return Database.Usuarios[index]
     }
 
     /**
      * 
-     * @param {Object} usuario 
-     * @returns Object
+     * @param {object} usuario 
+     * @returns object
      */
     static inserirUsuario(usuario){
         Database.Usuarios = [...Database.Usuarios, usuario]
         return Database.Usuarios
     }
 
+    /**
+     * 
+     * @param {number} id 
+     * @returns object
+     */
     static deletaUsuarioPorId(id){
         const usuarios = Database.Usuarios.filter((usuario, index)=>{
             return id != index
