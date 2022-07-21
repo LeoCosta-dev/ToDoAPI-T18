@@ -30,6 +30,18 @@ class Usuarios{
                 res.status(400).json({Erro:"Erro"})
             }
         })
+
+        app.put("/usuarios/:id", (req, res)=> {
+            const isValid = ValidacoesService.isValid(...Object.values(req.body))
+
+            if(isValid){
+                const usuario = new UsuarioModel(...Object.values(req.body))
+                const response = DatabaseMetodos.atualizarPorId(req.params.id, usuario)
+                res.status(201).json(response)
+            } else {
+                res.status(400).json({Erro:"Erro"})
+            }
+        })
         
         app.delete("/usuarios/:index", (req, res) => {
             if(ValidacoesService.validaIndex(req.params.index, Database.Usuarios)){

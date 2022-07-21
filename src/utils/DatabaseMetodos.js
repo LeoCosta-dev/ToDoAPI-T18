@@ -49,6 +49,23 @@ class DatabaseMetodos{
         Database.Usuarios = usuarios
         return {id: id, success: "usuario excluido com sucesso!"}
     }
+
+    /**
+     * 
+     * @param {number} id 
+     * @param {object} usuario 
+     * @returns Array<object>
+     */
+    static atualizarPorId(id, usuario){
+        const newUsuarios = Database.Usuarios.map((usuarioAtual, index)=>{
+            if(index == id){
+                return usuario
+            }
+            return usuarioAtual
+        })
+        Database.Usuarios = newUsuarios
+        return {success: "Usuário atualizado", id: id}
+    }
 }
 
 export default DatabaseMetodos
