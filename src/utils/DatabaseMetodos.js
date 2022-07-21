@@ -34,7 +34,7 @@ class DatabaseMetodos{
      */
     static inserirUsuario(usuario){
         Database.Usuarios = [...Database.Usuarios, usuario]
-        return Database.Usuarios
+        return {success: "Usuário criado com sucesso", index: Database.Usuarios.length - 1}
     }
 
     /**
