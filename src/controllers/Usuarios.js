@@ -43,6 +43,12 @@ class Usuarios{
             }
         })
         
+
+        app.patch("/usuarios/:id", (req, res)=>{
+            const response = DatabaseMetodos.atualizaPropriedadesPorId(req.params.id, req.body)
+            res.status(200).json(response)
+        })
+
         app.delete("/usuarios/:index", (req, res) => {
             if(ValidacoesService.validaIndex(req.params.index, Database.Usuarios)){
                 const usuario = DatabaseMetodos.deletaUsuarioPorId(req.params.index)
