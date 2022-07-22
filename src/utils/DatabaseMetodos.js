@@ -66,6 +66,20 @@ class DatabaseMetodos{
         Database.Usuarios = newUsuarios
         return {success: "Usuário atualizado", id: id}
     }
+
+    static atualizaPropriedadesPorId(id, usuario){
+
+        const chaves = Object.entries(usuario)
+        const usuarioSelecionado = Database.Usuarios[id]
+
+        chaves.forEach((atual)=>{
+            const chave = atual[0]
+            const valor = atual[1]
+            usuarioSelecionado[chave] = valor
+        })
+
+        return {success: "Usuário atualizado com sucesso", id: id}
+    }
 }
 
 export default DatabaseMetodos
