@@ -1,25 +1,9 @@
-export const Database = {
-    Usuarios: [
-        {
-            nome: "teste0",
-            email: "oi@oi",
-            telefone: "12345667"
-        },
-        {
-            nome: "teste1",
-            email: "oi@io",
-            telefone: "12345667"
-        },
-        {
-            nome: "teste2",
-            email: "oi@oi",
-            telefone: "12345667"
-        },
-        {
-            nome: "teste3",
-            email: "oi@io",
-            telefone: "12345667"
-        }
-    ],
-    Tarefas: []
-}
+import sqlite3 from "sqlite3";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+sqlite3.verbose()
+const filePath = dirname(fileURLToPath(import.meta.url)) + "/database.db"
+const Database = new sqlite3.Database(filePath)
+
+export default Database
