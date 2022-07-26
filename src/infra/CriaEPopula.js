@@ -5,6 +5,7 @@ const usuario ={
     email: "couve@mineira.com.br",
     telefone: "31777777777"
 }
+
 try {
 
     const tabela = await DatabaseMetodos.createTable()
