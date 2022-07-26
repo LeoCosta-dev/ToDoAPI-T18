@@ -1,84 +1,55 @@
-import { Database } from "../infra/Database.js";
+import Database from "../infra/Database.js";
 
 class DatabaseMetodos{
-    
-    /**
-     * 
-     * @returns array<object>
-     */
-    static listarTodoOBanco(){
-        return Database
-    }
+    static activePragma(){
+        const pragma = "PRAGMA foreign_keys = ON"
 
-    /**
-     * 
-     * @returns Array<object>
-     */
-    static listarTodosUsuarios(){
-        return Database.Usuarios
-    }
-
-    /**
-     * 
-     * @param {number} index 
-     * @returns object
-     */
-    static listarUsuarioPorIndex(index){
-        return Database.Usuarios[index]
-    }
-
-    /**
-     * 
-     * @param {object} usuario 
-     * @returns object
-     */
-    static inserirUsuario(usuario){
-        Database.Usuarios = [...Database.Usuarios, usuario]
-        return {success: "Usuário criado com sucesso", index: Database.Usuarios.length - 1}
-    }
-
-    /**
-     * 
-     * @param {number} id 
-     * @returns object
-     */
-    static deletaUsuarioPorId(id){
-        const usuarios = Database.Usuarios.filter((usuario, index)=>{
-            return id != index
-        })
-        Database.Usuarios = usuarios
-        return {id: id, success: "usuario excluido com sucesso!"}
-    }
-
-    /**
-     * 
-     * @param {number} id 
-     * @param {object} usuario 
-     * @returns Array<object>
-     */
-    static atualizarPorId(id, usuario){
-        const newUsuarios = Database.Usuarios.map((usuarioAtual, index)=>{
-            if(index == id){
-                return usuario
+        Database.run(pragma, (e)=>{
+            if(e){
+                console.log(e)
+            } else {
+                console.log("Chaves estrangeiras estão ativas")
             }
-            return usuarioAtual
         })
-        Database.Usuarios = newUsuarios
-        return {success: "Usuário atualizado", id: id}
     }
 
-    static atualizaPropriedadesPorId(id, usuario){
+    static createTable(){
+        
+        this.activePragma()
 
-        const chaves = Object.entries(usuario)
-        const usuarioSelecionado = Database.Usuarios[id]
-
-        chaves.forEach((atual)=>{
-            const chave = atual[0]
-            const valor = atual[1]
-            usuarioSelecionado[chave] = valor
+        const query = `
+        CREATE TABLE IF NOT EXISTS usuarios(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nome VARCHAR,
+            email VARCHAR,
+            telefone VARCHAR
+        )
+        `
+        return new Promise((resolve, reject)=>{
+            Database.run(query, (e)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve("Tabela usuários criada com sucesso!")
+                }
+            })
         })
+    }
 
-        return {success: "Usuário atualizado com sucesso", id: id}
+    static inserirUsuario(usuario){
+        const query = `INSERT INTO usuarios (nome, email, telefone) VALUES (?,?,?)`
+
+        const body = Object.values(usuario)
+
+        return new Promise((resolve, reject)=>{
+            Database.run(query, [...body], (e)=>{
+                if(e){
+                    reject(e.message)
+                } else {
+                    resolve({error: false, message: "Usuario cadastrado com sucesso!"})
+                }
+            })
+        })
     }
 }
 
