@@ -1,4 +1,4 @@
-import DatabaseMetodos from "../utils/DatabaseMetodos.js";
+import DatabaseMetodos from "../DAO/DatabaseUsuariosMetodos.js";
 
 const usuario ={
     nome: "José das Couves",
