@@ -1,22 +1,19 @@
 import Database from "../infra/Database.js";
 
 class DAO{
-    static activePragma(){
-        const pragma = "PRAGMA foreign_keys = ON"
+    static async ativaChavesEstrangeiras() {
+        const query = 'PRAGMA foreign_keys = ON';
 
-        Database.run(pragma, (e)=>{
-            if(e){
-                console.log(e)
-            } else {
-                console.log("Chaves estrangeiras estão ativas")
-            }
-        })
+        Database.run(query, error => {
+            if (error)
+                console.log(error.message);
+            else
+                console.log('Chaves estrangeiras ativadas com sucesso.');
+        });
     }
 
     static createTable(query){
         
-        this.activePragma()
-
         return new Promise((resolve, reject)=>{
             Database.run(query, (e)=>{
                 if(e){
@@ -58,7 +55,7 @@ class DAO{
         return new Promise((resolve, reject)=> {
             Database.get(query, id, (e, resultado)=>{
                 if(e){
-                    reject(e)
+                    reject(e.message)
                 } else {
                     resolve(resultado)
                 }
