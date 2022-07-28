@@ -20,7 +20,7 @@ class Usuarios{
                 }
                 res.status(200).json(usuario)
             } catch (error) {
-                res.status(404).send(error.message)
+                res.status(404).json(error.message)
             }
         })
 
@@ -59,13 +59,17 @@ class Usuarios{
             res.status(200).json(response)
         })
 
-        app.delete("/usuarios/:index", (req, res) => {
-            if(ValidacoesService.validaIndex(req.params.index, Database.Usuarios)){
-                const usuario = DatabaseUsuariosMetodos.deletaUsuarioPorId(req.params.index)
+        app.delete("/usuarios/:id", async (req, res) => {
+            try {                
+                const usuario = await DatabaseUsuariosMetodos.deletaUsuarioPorId(req.params.id)
+                if(!usuario){
+                    throw new Error("Usuário não encontrado")
+                }
                 res.status(200).json(usuario)
-            } else {
-                res.status(404).json({Error: "Usuário não encontrado"})
+            } catch (error) {    
+                res.status(404).json({Error: error.message})
             }
+                        
         })
     }
 }

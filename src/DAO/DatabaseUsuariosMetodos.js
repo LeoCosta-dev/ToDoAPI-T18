@@ -32,6 +32,12 @@ class DatabaseUsuariosMetodos extends DAO{
         const response = await this.listarPorId(id, query)
         return response
     }
+
+    static async deletaUsuarioPorId(id){
+        const query = `DELETE FROM usuarios WHERE id = ?`
+        const response = await this.deletaPorId(query, id)
+        return response
+    }
 }
 
 export default DatabaseUsuariosMetodos
