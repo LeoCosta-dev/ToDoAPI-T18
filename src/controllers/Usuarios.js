@@ -1,5 +1,5 @@
 import UsuarioModel from "../models/UsuarioModel.js";
-import ValidacoesUsuario from "../services/ValidacoesUsuario.js";
+import ValidacoesUsuarios from "../services/ValidacoesUsuarios.js";
 import DatabaseUsuariosMetodos from "../DAO/DatabaseUsuariosMetodos.js";
 import Database from "../infra/Database.js";
 
@@ -26,7 +26,7 @@ class Usuarios{
 
         app.post("/usuarios", async (req, res)=>{
 
-            const isValid = ValidacoesUsuario.isValid(...Object.values(req.body))
+            const isValid = ValidacoesUsuarios.isValid(...Object.values(req.body))
 
             try {              
                 if(isValid){
