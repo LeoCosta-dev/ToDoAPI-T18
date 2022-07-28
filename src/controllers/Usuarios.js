@@ -3,7 +3,7 @@ import ValidacoesUsuarios from "../services/ValidacoesUsuarios.js";
 import DatabaseUsuariosMetodos from "../DAO/DatabaseUsuariosMetodos.js";
 import Database from "../infra/Database.js";
 
-DatabaseUsuariosMetodos.createTable()
+DatabaseUsuariosMetodos.createTableUsuarios()
 
 class Usuarios{
     static rotas(app){

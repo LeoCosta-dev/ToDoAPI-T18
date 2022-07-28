@@ -8,7 +8,7 @@ const usuario ={
 
 try {
 
-    const tabela = await DatabaseMetodos.createTable()
+    const tabela = await DatabaseMetodos.createTableUsuarios()
     console.log(tabela)
 
     const criada = await DatabaseMetodos.inserirUsuario(usuario)
