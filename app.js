@@ -1,11 +1,11 @@
 import express from "express";
-// import * as dotenv from "dotenv"
+import * as dotenv from "dotenv"
 import cors from "cors"
 import Usuarios from "./src/controllers/Usuarios.js"
 
-// dotenv.config()
+dotenv.config()
 
-const port = 3000;
+const port =  process.env.PORT || 3000;
 
 const app = express()
 
