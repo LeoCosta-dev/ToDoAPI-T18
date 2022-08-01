@@ -5,7 +5,7 @@ import Usuarios from "./src/controllers/Usuarios.js"
 
 // dotenv.config()
 
-const port =  process.env.PORT || 3000;
+const port = 3000;
 
 const app = express()
 
