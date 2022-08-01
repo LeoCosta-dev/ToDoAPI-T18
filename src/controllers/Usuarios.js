@@ -12,6 +12,12 @@ class Usuarios{
             res.status(200).json(response)
         })
 
+        app.get("/heroku", async (req,res)=>{
+            const response = await DatabaseUsuariosMetodos.listarTodosUsuarios()
+            res.status(200).json(response)
+            console.log("estou rodando na heroku")
+        })
+
         app.get("/usuarios/:id", async (req, res)=>{
             try {
                 const usuario = await DatabaseUsuariosMetodos.listarUsuarioPorId(req.params.id)
