@@ -1,5 +1,5 @@
 import express from "express";
-import * as dotenv from "dotenv"
+// import * as dotenv from "dotenv"
 import cors from "cors"
 import Usuarios from "./src/controllers/Usuarios.js"
 
