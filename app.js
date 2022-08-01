@@ -16,4 +16,6 @@ app.listen(port, ()=>{
 app.use(express.json())
 app.use(cors())
 
+console.log(process.env.HOSTNAME)
+
 Usuarios.rotas(app)
