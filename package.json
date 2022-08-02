@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
@@ -20,8 +20,10 @@
   "homepage": "https://github.com/LeoCosta-dev/ToDoAPI-T18#readme",
   "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "jest": "^28.1.3",
     "path": "^0.12.7",
     "sqlite3": "^5.0.10",
     "url": "^0.11.0"

@@ -1,5 +1,6 @@
 import express from "express";
 import * as dotenv from "dotenv"
+import cors from "cors"
 import Usuarios from "./src/controllers/Usuarios.js"
 
 dotenv.config()
@@ -13,5 +14,8 @@ app.listen(port, ()=>{
 })
 
 app.use(express.json())
+app.use(cors())
+
+console.log(process.env.HOSTNAME)
 
 Usuarios.rotas(app)
